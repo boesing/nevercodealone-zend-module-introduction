@@ -29,4 +29,7 @@
     <file>config</file>
     <file>module</file>
     <file>public/index.php</file>
+
+    <!-- Ignore .xml.dist in NCA module -->
+    <exclude-pattern>**/*.xml.dist</exclude-pattern>
 </ruleset>
