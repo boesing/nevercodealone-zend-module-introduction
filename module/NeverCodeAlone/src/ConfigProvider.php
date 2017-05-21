@@ -55,11 +55,11 @@ class ConfigProvider
     {
         return [
             'routes' => [
-                'module-name-here' => [
+                'never-code-alone' => [
                     'type'    => 'Literal',
                     'options' => [
                         // Change this to something specific to your module
-                        'route'    => '/module-specific-root',
+                        'route'    => '/nca',
                         'defaults' => [
                             'controller'    => Controller\SkeletonController::class,
                             'action'        => 'index',
