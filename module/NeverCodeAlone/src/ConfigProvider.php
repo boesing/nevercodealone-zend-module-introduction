@@ -7,9 +7,6 @@
 
 namespace NeverCodeAlone;
 
-use NeverCodeAlone\Controller\SkeletonController;
-use Zend\ServiceManager\Factory\InvokableFactory;
-
 class ConfigProvider
 {
 
