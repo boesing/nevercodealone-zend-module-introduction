@@ -15,7 +15,13 @@
         "php": "^5.6 || ^7.0",
         "zendframework/zend-component-installer": "^1.0 || ^0.7 || ^1.0.0-dev@dev",
         "zendframework/zend-mvc": "^3.0.1",
-        "zfcampus/zf-development-mode": "^3.0"
+        "zfcampus/zf-development-mode": "^3.0",
+        "zendframework/zend-form": "^2.10",
+        "zendframework/zend-code": "^3.1",
+        "doctrine/annotations": "^1.4",
+        "zendframework/zend-i18n": "^2.7",
+        "zendframework/zend-math": "^3.0",
+        "zendframework/zend-session": "^2.7"
     },
     "autoload": {
         "psr-4": {
@@ -41,7 +47,7 @@
         "post-create-project-cmd": [
             "@development-enable"
         ],
-        "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "serve": "php -S 0.0.0.0:8080 -d max_execution_time=-1 -t public public/index.php",
         "test": "phpunit"
     },
     "require-dev": {

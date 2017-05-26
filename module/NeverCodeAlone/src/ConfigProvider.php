@@ -7,6 +7,7 @@
 
 namespace NeverCodeAlone;
 
+use NeverCodeAlone\Controller\SkeletonController;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 class ConfigProvider
@@ -28,27 +29,25 @@ class ConfigProvider
 
     /**
      * Return service-manager specific configuration.
-     *
      * @return array
      */
     public function getDependencyConfig()
     {
         return [
             'abstract_factories' => [],
-            'aliases'            => [],
-            'delegators'         => [],
-            'factories'          => [],
-            'initializers'       => [],
-            'invokables'         => [],
-            'lazy_services'      => [],
-            'services'           => [],
-            'shared'             => [],
+            'aliases' => [],
+            'delegators' => [],
+            'factories' => [],
+            'initializers' => [],
+            'invokables' => [],
+            'lazy_services' => [],
+            'services' => [],
+            'shared' => [],
         ];
     }
 
     /**
      * Return router configuration.
-     *
      * @return array
      */
     public function getRouterConfig()
@@ -56,19 +55,34 @@ class ConfigProvider
         return [
             'routes' => [
                 'never-code-alone' => [
-                    'type'    => 'Literal',
+                    'type' => 'Literal',
                     'options' => [
                         // Change this to something specific to your module
-                        'route'    => '/nca',
+                        'route' => '/nca',
                         'defaults' => [
-                            'controller'    => Controller\SkeletonController::class,
-                            'action'        => 'index',
+                            'controller' => Controller\SkeletonController::class,
                         ],
                     ],
-                    'may_terminate' => true,
+                    'may_terminate' => false,
                     'child_routes' => [
-                        // You can place additional routes that match under the
-                        // route defined above here.
+                        'submit' => [
+                            'type' => 'Method',
+                            'options' => [
+                                'verb' => 'post',
+                                'defaults' => [
+                                    'action' => 'submit',
+                                ],
+                            ],
+                        ],
+                        'form' => [
+                            'type' => 'Method',
+                            'options' => [
+                                'verb' => 'get',
+                                'defaults' => [
+                                    'action' => 'index',
+                                ],
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -77,21 +91,19 @@ class ConfigProvider
 
     /**
      * Return ControllerManager configuration.
-     *
      * @return array
      */
     public function getControllerConfig()
     {
         return [
             'factories' => [
-                Controller\SkeletonController::class => InvokableFactory::class,
+                Controller\SkeletonController::class => Controller\SkeletonController\Factory::class,
             ],
         ];
     }
 
     /**
      * Return ViewManager configuration.
-     *
      * @return array
      */
     public function getViewManagerConfig()

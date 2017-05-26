@@ -1,6 +1,25 @@
 <?php
 // @codingStandardsIgnoreFile
+/**
+ * @var \Zend\Form\FormInterface $form
+ * @var bool $formHasErrors
+ */
 ?>
 <strong>Module:</strong>        ZendSkeletonModule &raquo;
 <strong>Controller:</strong>    Skeleton &raquo;
 <strong>Action:</strong>        index
+
+
+<?= $this->form()->openTag($form); ?>
+
+<?php foreach ($form->getIterator() as $element): ?>
+    <?= $this->formRow($element); ?>
+    <?php
+    if ($formHasErrors):
+        $this->formElementErrors($element);
+    endif;
+    ?>
+    <br />
+<?php endforeach; ?>
+
+<?= $this->form()->closeTag($form); ?>
