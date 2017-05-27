@@ -33,7 +33,6 @@ class SkeletonController extends AbstractActionController
 
         return new ViewModel([
             'form' => $form,
-            'formHasErrors' => false,
         ]);
     }
 
@@ -48,13 +47,12 @@ class SkeletonController extends AbstractActionController
 
         $model = new ViewModel([
             'form' => $form,
-            'formHasErrors' => true,
         ]);
 
         if (!$form->isValid()) {
-            // Just display the form with errors again
-            $model->setTemplate('never-code-alone/skeleton/index');
-            return $model;
+            $messages = $form->getMessages();
+            var_dump($messages);
+            die;
         }
 
         // TODO: send mail to admin and notify him about new contact request
